@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model QuoteViewModel
+
+<!--
+Peter Haines
+    The home page
+-->
+
+<div class="text-center">
+    <h1>Check out these awesome quotes</h1>
+    @foreach (Quote q in Model.Quotes)
+    {
+        <p>@q.QuoteID</p>
+        <p><b>Quote</b></p>
+        <p>"@q.aQuote"</p>
+        <p class=""><i>@q.Author, @q.Date</i></p>
+        <br />
+        <p>@q.Subject</p>
+        <p>@q.Citation</p>
+        <form asp-action="EditQuote" method="get">
+            <input id="quoteID" name="quoteID" value="@q.QuoteID" hidden/>
+            <button type="submit" class="alert-danger">Edit</button>
+        </form>
+
+
+
+
+        <br />
+    }
+
+</div>
+
+<!--
+        <form asp-action="EditQuote">
+            <button class="btn-light" type="submit">Edit</button>
+            <input type="hidden" id="quoteID" name="quoteID" />
+        </form>
+        <br />
+        <form asp-action="DeleteQuote">
+            <button class="btn-danger" type="submit">Delete</button>
+            <input type="hidden" id="quoteID" name="quoteID" />
+        </form>
+-->
